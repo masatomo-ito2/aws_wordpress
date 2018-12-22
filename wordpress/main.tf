@@ -149,7 +149,7 @@ resource "aws_db_instance" "default" {
   identifier = "wp-mysql"
   allocated_storage = 5
   engine = "mysql"
-  engine_version = "5.6.22"
+  engine_version = "5.7.23"
   instance_class = "db.t2.micro"
   # general purpose SSD
   storage_type = "gp2"
