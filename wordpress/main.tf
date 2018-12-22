@@ -194,7 +194,7 @@ resource "aws_instance" "web" {
     "sudo tar zxf /tmp/wordpress-5.0.2-ja.tar.gz -C /opt",
     "sudo ln -s /opt/wordpress /var/www/html/",
     "sudo chown -R www-data:www-data /opt/wordpress",
-    "mysql -u root -p${var.db_password} -h ${aws_db_instance.default.address} < /home/ubuntu/prepareWordPress.sql"
+    "mysql -u ${var.db_username} -p${var.db_password} -h ${aws_db_instance.default.address} < /home/ubuntu/prepareWordPress.sql"
     ]
 
     connection {
