@@ -17,6 +17,8 @@ variable "ami" {
 variable "key_name" {
 	default = "masa" 
 }
+/*
 variable "ssh_key_file" {
 	default = "/Users/masa/HashiCorp/demo/credentials/aws/tf-se-demo/masa.pem"
 }	
+*/
