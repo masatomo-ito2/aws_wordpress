@@ -188,12 +188,12 @@ resource "aws_instance" "web" {
     "sudo apt-get install php php-mysql php-gd php-mbstring -y",
     "sudo apt-get install mysql-client -y",
     "sudo apt-get install apache2 apache2-utils -y",
+	"sudo systemctl enable apache2",
+	"sudo systemctl start apache2",
     "wget -O /tmp/wordpress-5.0.2-ja.tar.gz https://ja.wordpress.org/wordpress-5.0.2-ja.tar.gz",
     "sudo tar zxf /tmp/wordpress-5.0.2-ja.tar.gz -C /opt",
     "sudo ln -s /opt/wordpress /var/www/html/",
     "sudo chown -R www-data:www-data /opt/wordpress",
-	"sudo systemctl enable apache2",
-	"sudo systemctl start apache2",
     "mysql -u root -p${var.db_password} -h ${aws_db_instance.default.address} < /home/ubuntu/prepareWordPress.sql"
     ]
 
