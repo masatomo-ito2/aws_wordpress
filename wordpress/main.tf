@@ -180,7 +180,6 @@ resource "aws_instance" "web" {
     }
   }
 
-https://ja.wordpress.org/wordpress-5.0.2-ja.tar.gz
   provisioner "remote-exec" {
     inline = [
     "sudo yum install php php-mysql php-gd php-mbstring -y",
