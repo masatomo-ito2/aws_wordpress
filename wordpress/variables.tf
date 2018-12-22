@@ -18,7 +18,7 @@ variable "key_name" {
 	default = "masa" 
 }
 
-variable "private_key {}
+variable "private_key" {}
 
 /*
 variable "ssh_key_file" {
