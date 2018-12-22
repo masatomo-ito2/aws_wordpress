@@ -7,7 +7,7 @@ variable "db_username" {
 	default = "masa" 
 }
 variable "db_password" {
-	default = "passwd" 
+	default = "passwd1234" 
 }
 
 # ec2
