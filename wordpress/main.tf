@@ -184,17 +184,16 @@ resource "aws_instance" "web" {
 
   provisioner "remote-exec" {
     inline = [
-    "sudo yum install php php-mysql php-gd php-mbstring -y",
-    "sudo yum install mysql -y",
+    "sudo apt-get update",
+    "sudo apt-get install php php-mysql php-gd php-mbstring -y",
+    "sudo apt-get install mysql-client -y",
+    "sudo apt-get install apache2 apache2-utils -y",
     "wget -O /tmp/wordpress-5.0.2-ja.tar.gz https://ja.wordpress.org/wordpress-5.0.2-ja.tar.gz",
     "sudo tar zxf /tmp/wordpress-5.0.2-ja.tar.gz -C /opt",
     "sudo ln -s /opt/wordpress /var/www/html/",
-    "sudo chown -R apache:apache /opt/wordpress",
-    "sudo chkconfig httpd on",
-    "sudo killall -9 httpd",
-    "sudo rm -f /var/lock/subsys/httpd",
-    "sudo service httpd start",
-    "sudo service httpd status",
+    "sudo chown -R www-data:www-data /opt/wordpress",
+	"sudo systemctl enable apache2"
+	"sudo systemctl start apache2"
     "mysql -u root -p${var.db_password} -h ${aws_db_instance.default.address} < /home/ubuntu/prepareWordPress.sql"
     ]
 
