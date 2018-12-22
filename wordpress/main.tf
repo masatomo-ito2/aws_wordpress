@@ -184,17 +184,19 @@ resource "aws_instance" "web" {
 
   provisioner "remote-exec" {
     inline = [
-    "sudo apt-get update",
-    "sudo apt-get install php php-mysql php-gd php-mbstring -y",
-    "sudo apt-get install mysql-client -y",
-    "sudo apt-get install apache2 apache2-utils -y",
-	"sudo systemctl enable apache2",
-	"sudo systemctl start apache2",
-    "wget -O /tmp/wordpress-5.0.2-ja.tar.gz https://ja.wordpress.org/wordpress-5.0.2-ja.tar.gz",
-    "sudo tar zxf /tmp/wordpress-5.0.2-ja.tar.gz -C /opt",
-    "sudo ln -s /opt/wordpress /var/www/html/",
-    "sudo chown -R www-data:www-data /opt/wordpress",
-    "mysql -u ${var.db_username} -p${var.db_password} -h ${aws_db_instance.default.address} < /home/ubuntu/prepareWordPress.sql"
+	  // workaround for "apt-get update" to succeed. Need to wait cloud-init finishes.
+	  "until [[ -f test.txt ]]; do sleep 1; done",
+      "sudo apt-get update",
+      "sudo apt-get install php php-mysql php-gd php-mbstring -y",
+      "sudo apt-get install mysql-client -y",
+      "sudo apt-get install apache2 apache2-utils -y",
+	  "sudo systemctl enable apache2",
+	  "sudo systemctl start apache2",
+      "wget -O /tmp/wordpress-5.0.2-ja.tar.gz https://ja.wordpress.org/wordpress-5.0.2-ja.tar.gz",
+      "sudo tar zxf /tmp/wordpress-5.0.2-ja.tar.gz -C /opt",
+      "sudo ln -s /opt/wordpress /var/www/html/",
+      "sudo chown -R www-data:www-data /opt/wordpress",
+      "mysql -u ${var.db_username} -p${var.db_password} -h ${aws_db_instance.default.address} < /home/ubuntu/prepareWordPress.sql"
     ]
 
     connection {
