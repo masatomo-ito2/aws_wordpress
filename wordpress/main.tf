@@ -178,7 +178,7 @@ resource "aws_instance" "web" {
     connection {
 	  type = "ssh"
       user = "ec2-user"
-	  private_key = "${var.private_key}
+	  private_key = "${var.private_key}"
     }
   }
 
@@ -201,7 +201,7 @@ resource "aws_instance" "web" {
     connection {
 	  type = "ssh"
       user = "ec2-user"
-	  private_key = "${var.private_key}
+	  private_key = "${var.private_key}"
     }
   }
 }
