@@ -173,11 +173,11 @@ resource "aws_instance" "web" {
 
   provisioner "file" {
     source = "prepareWordPress.sql"
-    destination = "/home/ec2-user/prepareWordPress.sql"
+    destination = "/home/ubuntu/prepareWordPress.sql"
 
     connection {
 	  type = "ssh"
-      user = "ec2-user"
+      user = "ubuntu"
 	  private_key = "${var.private_key}"
     }
   }
@@ -195,12 +195,12 @@ resource "aws_instance" "web" {
     "sudo rm -f /var/lock/subsys/httpd",
     "sudo service httpd start",
     "sudo service httpd status",
-    "mysql -u root -p${var.db_password} -h ${aws_db_instance.default.address} < /home/ec2-user/prepareWordPress.sql"
+    "mysql -u root -p${var.db_password} -h ${aws_db_instance.default.address} < /home/ubuntu/prepareWordPress.sql"
     ]
 
     connection {
 	  type = "ssh"
-      user = "ec2-user"
+      user = "ubuntu"
 	  private_key = "${var.private_key}"
     }
   }

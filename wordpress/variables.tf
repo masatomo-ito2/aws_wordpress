@@ -18,6 +18,7 @@ variable "key_name" {
 	default = "masa" 
 }
 
+// the value of private key is stored in TFE securely
 variable "private_key" {}
 
 /*
