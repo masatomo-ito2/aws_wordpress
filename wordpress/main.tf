@@ -174,10 +174,13 @@ resource "aws_instance" "web" {
   provisioner "file" {
     source = "prepareWordPress.sql"
     destination = "/home/ec2-user/prepareWordPress.sql"
+
+	/*
     connection {
       user = "ec2-user"
       key_file = "${var.ssh_key_file}"
     }
+	*/
   }
 
   provisioner "remote-exec" {
@@ -195,9 +198,12 @@ resource "aws_instance" "web" {
     "sudo service httpd status",
     "mysql -u root -p${var.db_password} -h ${aws_db_instance.default.address} < /home/ec2-user/prepareWordPress.sql"
     ]
+
+	/*
     connection {
       user = "ec2-user"
       key_file = "${var.ssh_key_file}"
     }
+	*/
   }
 }
