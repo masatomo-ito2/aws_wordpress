@@ -185,7 +185,7 @@ resource "aws_instance" "web" {
   provisioner "remote-exec" {
     inline = [
 	  // workaround for "apt-get update" to succeed. Need to wait cloud-init finishes.
-	  "until [[ -f /var/lib/cloud/instance/boot-finished ]]; do sleep 1; done",
+      "cloud-init status --wait",
       "sudo apt-get update",
       "sudo apt-get install php php-mysql php-gd php-mbstring -y",
       "sudo apt-get install mysql-client -y",
