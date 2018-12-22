@@ -180,12 +180,13 @@ resource "aws_instance" "web" {
     }
   }
 
+https://ja.wordpress.org/wordpress-5.0.2-ja.tar.gz
   provisioner "remote-exec" {
     inline = [
     "sudo yum install php php-mysql php-gd php-mbstring -y",
     "sudo yum install mysql -y",
-    "wget -O /tmp/wordpress-4.1-ja.tar.gz https://ja.wordpress.org/wordpress-4.1-ja.tar.gz",
-    "sudo tar zxf /tmp/wordpress-4.1-ja.tar.gz -C /opt",
+    "wget -O /tmp/wordpress-5.0.2-ja.tar.gz https://ja.wordpress.org/wordpress-5.0.2-ja.tar.gz",
+    "sudo tar zxf /tmp/wordpress-5.0.2-ja.tar.gz -C /opt",
     "sudo ln -s /opt/wordpress /var/www/html/",
     "sudo chown -R apache:apache /opt/wordpress",
     "sudo chkconfig httpd on",

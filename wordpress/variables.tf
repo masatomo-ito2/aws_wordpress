@@ -3,10 +3,10 @@ variable "region" {
 }
 
 # rds
-variable "db_username" {}
-variable "db_password" {}
+variable "masa" {}
+variable "passwd" {}
 
 # ec2
-variable "ami" {}
-variable "key_name" {}
-variable "ssh_key_file" {}
+variable "ami-07ad4b1c3af1ea214" {}
+variable "masa" {}
+variable "/Users/masa/HashiCorp/demo/credentials/aws/tf-se-demo/masa.pem" {}
