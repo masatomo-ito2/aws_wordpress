@@ -4,22 +4,25 @@ variable "region" {
 
 # rds
 variable "db_username" {
-	default = "masa" 
+  default = "masa"
 }
+
 variable "db_password" {
-	default = "passwd1234" 
+  default = "passwd1234"
 }
 
 # ec2
 variable "ami" {
-	default = "ami-07ad4b1c3af1ea214" 
+  default = "ami-07ad4b1c3af1ea214"
 }
+
 variable "key_name" {
-	default = "masa" 
+  default = "masa"
 }
 
 // the value of private key is stored in TFE securely
-variable "private_key" {}
+variable "private_key" {
+}
 
 /*
 variable "ssh_key_file" {

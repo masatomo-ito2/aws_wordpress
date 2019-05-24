@@ -3,9 +3,10 @@ output "wordpress-endpoint" {
 }
 
 output "web-ip" {
-  value = "${aws_instance.web.public_ip}"
+  value = aws_instance.web.public_ip
 }
 
 output "db-address" {
-  value = "${aws_db_instance.default.address}"
+  value = aws_db_instance.default.address
 }
+
